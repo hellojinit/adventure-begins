@@ -1,0 +1,196 @@
+.wordle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+  max-width: 500px;
+  margin: 0 auto;
+  color: #ffffff;
+}
+
+header {
+  padding: 10px 0;
+  border-bottom: 1px solid #3a3a3c;
+  width: 100%;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.2rem;
+  color: #ffffff;
+}
+
+.message-container {
+  height: 30px;
+  margin: 10px 0;
+}
+
+.message {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #121213;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  animation: fadeIn 0.2s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.board {
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  gap: 5px;
+  margin: 30px 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.cell {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #3a3a3c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  background-color: #121213;
+  color: #ffffff;
+}
+
+.cell.correct {
+  background-color: #538d4e;
+  border-color: #538d4e;
+  color: white;
+}
+
+.cell.present {
+  background-color: #b59f3b;
+  border-color: #b59f3b;
+  color: white;
+}
+
+.cell.absent {
+  background-color: #3a3a3c;
+  border-color: #3a3a3c;
+  color: white;
+}
+
+.keyboard {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.key {
+  background-color: #818384;
+  border: 0;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin: 0 3px;
+  min-width: 40px;
+  height: 58px;
+  cursor: pointer;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+}
+
+.key.wide-key {
+  min-width: 65px;
+}
+
+.key svg {
+  height: 20px;
+  width: 20px;
+  fill: #ffffff;
+}
+
+.key.correct {
+  background-color: #538d4e;
+  color: white;
+}
+
+.key.present {
+  background-color: #b59f3b;
+  color: white;
+}
+
+.key.absent {
+  background-color: #3a3a3c;
+  color: white;
+}
+
+.game-status {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.status-message {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.status-message.won {
+  color: #538d4e;
+}
+
+.status-message.lost {
+  color: #818384;
+}
+
+.reset-button {
+  background-color: #538d4e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.reset-button:hover {
+  background-color: #447341;
+}
+
+@media (max-width: 500px) {
+  .cell {
+    width: 50px;
+    height: 50px;
+    font-size: 1.8rem;
+  }
+
+  .key {
+    min-width: 30px;
+    height: 50px;
+    font-size: 0.8rem;
+  }
+
+  .key.wide-key {
+    min-width: 55px;
+  }
+}

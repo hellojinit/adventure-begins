@@ -1,0 +1,48 @@
+<div class="wordle-container">
+  <header>
+    <h1>WORDLE</h1>
+  </header>
+
+  <div class="message-container" *ngIf="message">
+    <div class="message">{{ message }}</div>
+  </div>
+
+  <div class="board">
+    <div class="row" *ngFor="let row of rows; let rowIndex = index">
+      <div
+        class="cell"
+        *ngFor="let cell of row; let colIndex = index"
+        [ngClass]="cell.status"
+      >
+        {{ cell.letter }}
+      </div>
+    </div>
+  </div>
+
+  <div class="keyboard">
+    <div class="keyboard-row" *ngFor="let row of keyboardRows">
+      <button
+        *ngFor="let key of row"
+        class="key"
+        [ngClass]="[getKeyboardCellClass(key), key === 'Enter' || key === 'Backspace' ? 'wide-key' : '']"
+        (click)="handleKeyClick(key)"
+      >
+        <ng-container *ngIf="key !== 'Backspace'; else backspace">
+          {{ key }}
+        </ng-container>
+        <ng-template #backspace>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+            <path d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7.07L2.4 12l4.66-7H22v14zm-11.59-2L14 13.41 17.59 17 19 15.59 15.41 12 19 8.41 17.59 7 14 10.59 10.41 7 9 8.41 12.59 12 9 15.59z"></path>
+          </svg>
+        </ng-template>
+      </button>
+    </div>
+  </div>
+
+  <div class="game-status" *ngIf="gameStatus !== 'playing'">
+    <div class="status-message" [ngClass]="gameStatus">
+      {{ gameStatus === 'won' ? 'You won!' : 'Game over!' }}
+    </div>
+    <button class="reset-button" (click)="resetGame()">Play Again</button>
+  </div>
+</div>
