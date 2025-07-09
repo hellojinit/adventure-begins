@@ -22,7 +22,7 @@ export class MusicQuizComponent {
 
   // Correct answers for the quiz
   private correctAnswers = {
-    question1: 'Beatles',
+    question1: 'december',
     question2: 'Friends',
     question3: 'Die'
   };
@@ -36,7 +36,7 @@ export class MusicQuizComponent {
 
       // Navigate to adventure-begins after a short delay
       setTimeout(() => {
-        this.router.navigate(['/friends']);
+        this.router.navigate(['/slide']);
       }, 3000);
     } else {
       this.message = 'Sorry, one or more answers are incorrect. You\'ve permanently lost a point :(. Try again!';

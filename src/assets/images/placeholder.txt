@@ -1,0 +1,14 @@
+# Puzzle Images Directory
+
+This directory should contain the following image files for the sliding puzzle:
+- 00.png
+- 01.png
+- 02.png
+- 10.png
+- 11.png
+- 12.png
+- 20.png
+- 21.png
+- 22.png
+
+Please add these images to this directory.

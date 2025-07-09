@@ -41,7 +41,7 @@ export class FriendsComponent {
 
       // Navigate to adventure-begins after a short delay
       setTimeout(() => {
-        this.router.navigate(['/adventure-begins']);
+        this.router.navigate(['/congratulations']);
       }, 4000);
     } else {
       this.message = 'Aiyoooo, one or more answers are incorrect. You\'ve permanently lost a point :(. Try again!';
