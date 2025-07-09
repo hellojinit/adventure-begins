@@ -1,10 +1,16 @@
 <div class="wordle-container">
   <header>
-    <h1>WORDLE</h1>
+    <h1>PUZZLE</h1>
   </header>
 
   <div class="message-container" *ngIf="message">
     <div class="message">{{ message }}</div>
+  </div>
+
+  <div class="game-status" *ngIf="gameStatus !== 'playing'">
+    <div class="status-message" [ngClass]="gameStatus">
+      {{ gameStatus === 'won' ? 'Yayy, you won!' : 'Game over!' }}
+    </div>
   </div>
 
   <div class="board">
@@ -39,10 +45,12 @@
     </div>
   </div>
 
-  <div class="game-status" *ngIf="gameStatus !== 'playing'">
-    <div class="status-message" [ngClass]="gameStatus">
-      {{ gameStatus === 'won' ? 'You won!' : 'Game over!' }}
+  <div class="game-status" *ngIf="gameStatus === 'won'">
+    <div>Hey, wanna pick one? (There's a right answer) </div>
+    <div class="emoji-container">
+      <button class="emoji-button" (click)="navigateToAdventure()">🐒</button>
+      <button class="emoji-button" (click)="hideGame()">🦒</button>
+      <button class="emoji-button" (click)="hideGame()">🦄</button>
     </div>
-    <button class="reset-button" (click)="resetGame()">Play Again</button>
   </div>
 </div>

@@ -50,13 +50,13 @@ export class WordleService {
     'SUPER', 'SWEET', 'TABLE', 'TAKEN', 'TASTE', 'TAXES', 'TEACH', 'TEETH', 'TERRY', 'TEXAS',
     'THANK', 'THEFT', 'THEIR', 'THEME', 'THERE', 'THESE', 'THICK', 'THING', 'THINK', 'THIRD',
     'THOSE', 'THREE', 'THREW', 'THROW', 'TIGHT', 'TIMES', 'TIRED', 'TITLE', 'TODAY', 'TOPIC',
-    'TOTAL', 'TOUCH', 'TOUGH', 'TOWER', 'TRACK', 'TRADE', 'TRAIN', 'TREAT', 'TREND', 'TRIAL',
+    'TOTAL', 'TOUCH', 'TOUGH', 'TOWER', 'TRACK', 'TRADE', 'TRAIN', 'TRE AT', 'TREND', 'TRIAL',
     'TRIED', 'TRIES', 'TRUCK', 'TRULY', 'TRUST', 'TRUTH', 'TWICE', 'UNDER', 'UNDUE', 'UNION',
     'UNITY', 'UNTIL', 'UPPER', 'UPSET', 'URBAN', 'USAGE', 'USUAL', 'VALID', 'VALUE', 'VIDEO',
     'VIRUS', 'VISIT', 'VITAL', 'VOICE', 'WASTE', 'WATCH', 'WATER', 'WHEEL', 'WHERE', 'WHICH',
     'WHILE', 'WHITE', 'WHOLE', 'WHOSE', 'WOMAN', 'WOMEN', 'WORLD', 'WORRY', 'WORSE', 'WORST',
     'WORTH', 'WOULD', 'WOUND', 'WRITE', 'WRONG', 'WROTE', 'YIELD', 'YOUNG', 'YOUTH', 'HELLO',
-    'CRANE', 'PIXEL', 'LATER', 'WORLD'
+    'CRANE', 'PIXEL', 'LATER', 'WORLD', 'HASTE', 'STORK'
   ];
 
   constructor() { }
@@ -64,8 +64,7 @@ export class WordleService {
   selectRandomWord(): void {
     // const randomIndex = Math.floor(Math.random() * this.validWords.length);
     // this.targetWord = this.validWords[randomIndex];
-    this.targetWord = 'WORLD';
-    console.log('Target word (for debugging):', this.targetWord);
+    this.targetWord = 'READY';
   }
 
   getCurrentWord(): string {

@@ -1,0 +1,68 @@
+<div class="quiz-container">
+  <header>
+    <h1>Friends Episode Quiz</h1>
+    <p class="quiz-instructions">Your task is to open the following Youtube URL and <span class="highlight">don't look at the video</span>. It's a compilation video of friends funny clips. Just based on the audio you need to guess the episode names. Add numbering against each episode name in the order they are heard.
+    For example: the first one you'll hear is named "The one where no one's ready"</p>
+    <div class="youtube-link">
+      <a href="{{ youtubeUrl }}" target="_blank" rel="noopener noreferrer">{{ youtubeUrl }}</a>
+    </div>
+  </header>
+
+  <div class="message-container" *ngIf="showMessage">
+    <div class="message">{{ message }}</div>
+  </div>
+
+  <div class="quiz-form">
+    <div class="question">
+      <label for="episode1">The one where no one's ready</label>
+      <input
+        type="text"
+        id="episode1"
+        [(ngModel)]="answers.episode1"
+        placeholder="Enter order number"
+      />
+    </div>
+
+    <div class="question">
+      <label for="episode2">The one with the ball</label>
+      <input
+        type="text"
+        id="episode2"
+        [(ngModel)]="answers.episode2"
+        placeholder="Enter order number"
+      />
+    </div>
+
+    <div class="question">
+      <label for="episode3">The one with the football</label>
+      <input
+        type="text"
+        id="episode3"
+        [(ngModel)]="answers.episode3"
+        placeholder="Enter order number"
+      />
+    </div>
+
+    <div class="question">
+      <label for="episode4">The one with the cop</label>
+      <input
+        type="text"
+        id="episode4"
+        [(ngModel)]="answers.episode4"
+        placeholder="Enter order number"
+      />
+    </div>
+
+    <div class="question">
+      <label for="episode5">The one with all the resolutions</label>
+      <input
+        type="text"
+        id="episode5"
+        [(ngModel)]="answers.episode5"
+        placeholder="Enter order number"
+      />
+    </div>
+
+    <button class="submit-button" (click)="submitAnswers()">Submit Answers</button>
+  </div>
+</div>

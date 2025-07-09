@@ -1,0 +1,44 @@
+<div class="quiz-container">
+  <header>
+    <h1>Music Quiz</h1>
+    <p>Being a musical genius, listen to the tunes that Jinit is going to play and guess correctly to continue your adventure!</p>
+  </header>
+
+  <div class="message-container" *ngIf="showMessage">
+    <div class="message">{{ message }}</div>
+  </div>
+
+  <div class="quiz-form">
+    <div class="question">
+      <label for="question1">1. Song 1?</label>
+      <input
+        type="text"
+        id="question1"
+        [(ngModel)]="answers.question1"
+        placeholder="Enter song name"
+      />
+    </div>
+
+    <div class="question">
+      <label for="question2">2. Song 2?</label>
+      <input
+        type="text"
+        id="question2"
+        [(ngModel)]="answers.question2"
+        placeholder="Enter song name"
+      />
+    </div>
+
+    <div class="question">
+      <label for="question3">3. Song 3?</label>
+      <input
+        type="text"
+        id="question3"
+        [(ngModel)]="answers.question3"
+        placeholder="Enter song name"
+      />
+    </div>
+
+    <button class="submit-button" (click)="submitAnswers()">Submit Answers</button>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WordleService } from './wordle.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-wordle',
@@ -22,7 +23,7 @@ export class WordleComponent implements OnInit {
   ];
   keyboardStatus: { [key: string]: 'correct' | 'present' | 'absent' | '' } = {};
 
-  constructor(private wordleService: WordleService) {}
+  constructor(private wordleService: WordleService, private router: Router) {}
 
   ngOnInit(): void {
     this.initializeGame();
@@ -136,5 +137,13 @@ export class WordleComponent implements OnInit {
 
   getKeyboardCellClass(key: string): string {
     return this.keyboardStatus[key] || '';
+  }
+
+  navigateToAdventure(): void {
+    this.router.navigate(['/adventure-begins']);
+  }
+
+  hideGame(): void {
+    this.gameStatus = 'playing';
   }
 }
