@@ -1,21 +1,103 @@
-/* You can add global styles to this file, and also import other style files */
-/* Global Styles */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* src/styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+  --background-color: #121213; /* Deeper purple background */
+  --container-color: #413a6b; /* Richer purple for containers */
+  --primary-text-color: #f5f5f5; /* Off-white for main text */
+  --secondary-text-color: #bca0dc; /* Softer lavender for subtitles */
+  --accent-color: #7e57c2; /* Vibrant purple for buttons and interactive elements */
+  --accent-hover-color: #9575cd; /* Lighter purple for hover states */
+  --highlight-color: #ab47bc; /* A magenta/purple for special highlights */
+  --font-family: 'Poppins', sans-serif;
 }
 
 body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  background-color: #121213;
-  color: #ffffff;
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-text-color);
+  font-weight: 600;
+}
+
+p {
+  line-height: 1.6;
+}
+
+a {
+  color: var(--highlight-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-hover-color);
+}
+
+/* Base button style */
 button {
+  font-family: var(--font-family);
+  background-color: var(--accent-color);
+  color: var(--primary-text-color);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-button:focus {
+button:hover {
+  background-color: var(--accent-hover-color);
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Base input and textarea style */
+input[type="text"],
+textarea {
+  font-family: var(--font-family);
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 2px solid var(--accent-color);
+  background-color: var(--container-color);
+  color: var(--primary-text-color);
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus {
   outline: none;
+  border-color: var(--highlight-color);
+  box-shadow: 0 0 8px var(--highlight-color);
+}
+
+/* A general-purpose container for consistent layout */
+.main-container {
+  background-color: var(--container-color);
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
 }

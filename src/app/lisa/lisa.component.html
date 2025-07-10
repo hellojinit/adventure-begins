@@ -1,37 +1,37 @@
-<div class="lisa-container">
+<div class="lisa-container main-container">
   <div class="content">
     <div *ngIf="!showChallenge && !questFailed" class="intro">
-      <h1>Dang it, you didn't fall for my trick :(</h1>
-      <p>Press this button to get your final puzzle. Beware, you'll only have <span class="highlight">60 seconds</span> to complete it!!!!!</p>
-      <div class="warning">LOCK INNN!!!</div>
+      <h1>Dang it, you didn't fall for my trap :(</h1>
+      <p>Press this button to get your final puzzle. But beware, you'll only have <span class="highlight">60 seconds</span> to complete it!!!!!</p>
+      <div class="warning">ARE YOU READY?? LOCK IN!!!</div>
       <button class="start-button" (click)="startChallenge()">Start Final Challenge</button>
     </div>
 
     <div *ngIf="showChallenge" class="challenge">
       <div class="timer-container">
-        <div class="timer" [ngClass]="{'warning': timerValue <= 10}">{{ timerValue }}</div>
+        <div class="timer" [ngClass]="{'warning-time': timerValue <= 10}">{{ timerValue }}</div>
         <div class="timer-label">seconds remaining</div>
       </div>
 
       <div class="challenge-text">
-        <p>Being the ultimate pun queen, all you need to do is make a Joke or Pun related to anything in this adventure quest.</p>
-        <p>If your pun is good enough then Jinit will tell you the final answer.</p>
+        <p>As the ultimate pun queen, your task is to make a joke or pun related to anything in this adventure. Say it out loud!</p>
+        <p>If your pun is good enough, Jinit will tell you the final answer.</p>
       </div>
 
       <div class="answer-form">
         <textarea
           [(ngModel)]="userAnswer"
           (ngModelChange)="checkAnswer()"
-          placeholder="Type your answer here..."
-          [ngClass]="{'correct': userAnswer.toLowerCase().trim() === correctAnswer}"
+          placeholder="Type the answer you get from Jinit here..."
+          rows="3"
         ></textarea>
       </div>
     </div>
 
     <div *ngIf="questFailed" class="failure">
       <h2>Quest Failed!</h2>
-      <p>You ran out of time! The ultimate pun queen would have been faster.</p>
-      <p>Maybe next time you'll be quick enough to complete the challenge.</p>
+      <p>You ran out of time! :(</p>
+      <p>You can play again by sacrificing a point</p>
       <button class="retry-button" (click)="startChallenge()">Try Again</button>
     </div>
   </div>

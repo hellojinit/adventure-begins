@@ -36,7 +36,7 @@ export class FriendsComponent {
 
   submitAnswers(): void {
     if (this.checkAnswers()) {
-      this.message = 'Correct!!🎉 Off you go Dobby...';
+      this.message = 'Correct!!🎉 Off you go babe...';
       this.showMessage = true;
 
       // Navigate to adventure-begins after a short delay

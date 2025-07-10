@@ -1,9 +1,9 @@
-<div class="quiz-container">
+<div class="quiz-container main-container">
   <header>
     <h1>Friends</h1>
-    <h2>Good going CUCUB. Welcome to your 3rd last quest :(!</h2>
-    <p class="quiz-instructions">Your task is to open the following Youtube URL and <span class="highlight">don't look at the video</span>. It's a compilation video of friends funny clips. Just based on the audio you need to guess the episode names. Add numbering against each episode name in the order they are heard.
-    For example: the first one you'll hear is named "The one where no one's ready"</p>
+    <h2>Good going CUCUB! Welcome to your 3rd last quest :(!</h2>
+    <p class="quiz-instructions">Your task is to open the following Youtube URL but <span class="highlight">don't look at the video</span>! It's a compilation video of funny friends clips. Based only on the audio, you must guess the episode names. Number each episode name in the order you hear it.
+      For example: the first one you'll hear is titled "The one where no one's ready"</p>
     <div class="youtube-link">
       <a href="{{ youtubeUrl }}" target="_blank" rel="noopener noreferrer">{{ youtubeUrl }}</a>
     </div>
@@ -13,13 +13,14 @@
     <div class="message">{{ message }}</div>
   </div>
 
-  <div class="quiz-form">
+  <form class="quiz-form" (ngSubmit)="submitAnswers()">
     <div class="question">
       <label for="episode1">The one where no one's ready</label>
       <input
         type="text"
         id="episode1"
         [(ngModel)]="answers.episode1"
+        name="episode1"
         placeholder="Enter order number"
       />
     </div>
@@ -30,6 +31,7 @@
         type="text"
         id="episode2"
         [(ngModel)]="answers.episode2"
+        name="episode2"
         placeholder="Enter order number"
       />
     </div>
@@ -40,6 +42,7 @@
         type="text"
         id="episode3"
         [(ngModel)]="answers.episode3"
+        name="episode3"
         placeholder="Enter order number"
       />
     </div>
@@ -50,6 +53,7 @@
         type="text"
         id="episode4"
         [(ngModel)]="answers.episode4"
+        name="episode4"
         placeholder="Enter order number"
       />
     </div>
@@ -60,10 +64,11 @@
         type="text"
         id="episode5"
         [(ngModel)]="answers.episode5"
+        name="episode5"
         placeholder="Enter order number"
       />
     </div>
 
-    <button class="submit-button" (click)="submitAnswers()">Submit Answers</button>
-  </div>
+    <button type="submit" class="submit-button">Submit Answers</button>
+  </form>
 </div>

@@ -1,0 +1,19 @@
+h1 {
+  color: var(--primary-text-color);
+  text-shadow: 0 0 10px var(--highlight-color);
+  margin-bottom: 25px;
+}
+
+h3 {
+  color: var(--secondary-text-color);
+  line-height: 1.5;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.ps-text {
+  margin-top: 40px;
+  font-style: italic;
+  color: var(--secondary-text-color);
+  opacity: 0.8;
+}

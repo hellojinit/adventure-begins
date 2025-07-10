@@ -22,16 +22,16 @@ export class MusicQuizComponent {
 
   // Correct answers for the quiz
   private correctAnswers = {
-    question1: 'december',
-    question2: 'Friends',
-    question3: 'Die'
+    question1: 'wolves',
+    question2: 'tally',
+    question3: 'december'
   };
 
   constructor(private router: Router) {}
 
   submitAnswers(): void {
     if (this.checkAnswers()) {
-      this.message = 'Eeeezzzzz, GREAT JOB!!🎉 Your quest continues...';
+      this.message = 'Never doubted you! GREAT JOB!!🎉 Your quest continues...';
       this.showMessage = true;
 
       // Navigate to adventure-begins after a short delay

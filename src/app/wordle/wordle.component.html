@@ -1,6 +1,6 @@
 <div class="wordle-container">
   <header>
-    <h1>PUZZLE</h1>
+    <h1>SHALINIS WORDLE</h1>
   </header>
 
   <div class="message-container" *ngIf="message">
@@ -10,6 +10,15 @@
   <div class="game-status" *ngIf="gameStatus !== 'playing'">
     <div class="status-message" [ngClass]="gameStatus">
       {{ gameStatus === 'won' ? 'Yayy, you won!' : 'Game over!' }}
+    </div>
+  </div>
+
+  <div class="game-status" *ngIf="gameStatus === 'won'">
+    <div>Hey, care to pick one? (There's a right answer) </div>
+    <div class="emoji-container">
+      <button class="emoji-button" (click)="navigateToAdventure()">🐒</button>
+      <button class="emoji-button" (click)="hideGame()">🦒</button>
+      <button class="emoji-button" (click)="hideGame()">🦄</button>
     </div>
   </div>
 
@@ -42,15 +51,6 @@
           </svg>
         </ng-template>
       </button>
-    </div>
-  </div>
-
-  <div class="game-status" *ngIf="gameStatus === 'won'">
-    <div>Hey, wanna pick one? (There's a right answer) </div>
-    <div class="emoji-container">
-      <button class="emoji-button" (click)="navigateToAdventure()">🐒</button>
-      <button class="emoji-button" (click)="hideGame()">🦒</button>
-      <button class="emoji-button" (click)="hideGame()">🦄</button>
     </div>
   </div>
 </div>

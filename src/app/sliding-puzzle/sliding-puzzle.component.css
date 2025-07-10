@@ -23,11 +23,12 @@
   grid-template-rows: repeat(3, 100px);
   gap: 8px;
   margin-bottom: 2rem;
-  /*max-width: 424px;*/
+  max-width: 424px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   overflow: hidden;
   background-color: #1e1e1e;
+  align-content: center;
   padding: 12px;
 }
 

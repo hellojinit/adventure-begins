@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./adventure-begins.component.css']
 })
 export class AdventureBeginsComponent {
-  message = 'Your adventure begins!! All good things come at a price. By playing this game you\'ll be wagering 3 points. If you successfully reach the final page, you\'ll gain 6 points. However, if you fail to reach the final page you\'ll forever lose those points. Good luck! Don\'t take this lightly, to solve these riddles you\'ll have to go to the source of it.';
+  message = 'Welcome, CUCUB!! All good things come with a price. By playing this game, you\'ll be wagering 3 points. If you successfully reach the final page, you shall be rewarded with 6 glorious points! Fail, and you\'ll lose those points forever. Good luck!';
 
   ngOnInit(): void {
     console.log("WELCOME TO THE SOURCE! To progress, change the URL to the answer of the below riddle.")
