@@ -25,6 +25,7 @@ export class LisaComponent implements OnDestroy {
   startChallenge(): void {
     this.showChallenge = true;
     this.timerStarted = true;
+    this.questFailed = false;
     this.startTimer();
   }
 
@@ -42,6 +43,7 @@ export class LisaComponent implements OnDestroy {
     this.stopTimer();
     this.questFailed = true;
     this.showChallenge = false;
+    this.timerValue = 60;
   }
 
   checkAnswer(): void {
