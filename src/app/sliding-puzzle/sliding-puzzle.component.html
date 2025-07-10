@@ -13,6 +13,10 @@
     </div>
   </div>
 
+  <div *ngIf="isSolved" class="solved-container">
+    <img [src]="solvedImageUrl" alt="Solved Puzzle" class="solved-image" />
+  </div>
+
   <button class="continue-button" (click)="navigateToFriends()">
     I'm satisfied, let's continue >>
   </button>

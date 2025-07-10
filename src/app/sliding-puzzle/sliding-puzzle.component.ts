@@ -18,7 +18,10 @@ interface Tile {
 })
 export class SlidingPuzzleComponent implements OnInit {
   tiles: Tile[] = [];
-  emptyTileIndex: number = 9; // Starting with empty tile at bottom right
+  isSolved = false; // New property to track the solved state of the puzzle.
+  // The full image to be displayed when the puzzle is solved.
+  // Make sure this image exists in your assets folder.
+  solvedImageUrl = 'sky.png';
 
   constructor(private router: Router) {}
 
@@ -29,6 +32,7 @@ export class SlidingPuzzleComponent implements OnInit {
 
   initializePuzzle(): void {
     this.tiles = [];
+    this.isSolved = false; // Reset solved state on initialization
 
     // Create the 3x3 grid of tiles with images
     for (let row = 0; row < 3; row++) {
@@ -42,71 +46,96 @@ export class SlidingPuzzleComponent implements OnInit {
       }
     }
 
-    // Add the empty tile (position 3,3 or bottom right in our 3x3 grid extended to 3x4)
-    this.tiles.push({
-      id: 9,
-      imageUrl: null,
-      row: 2,
-      col: 3
-    });
+    // Add the empty tiles.
+    this.tiles.push({ id: 9, imageUrl: null, row: 2, col: 3 });
+    this.tiles.push({ id: 10, imageUrl: null, row: 1, col: 3 });
   }
 
   shufflePuzzle(): void {
-    // Start with a solved puzzle and make a series of valid moves to shuffle
     const moves = 100;
     for (let i = 0; i < moves; i++) {
       const possibleMoves = this.getPossibleMoves();
       if (possibleMoves.length > 0) {
-        const randomMove = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
-        this.moveTile(randomMove);
+        const randomMoveIndex = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
+        this.moveTile(randomMoveIndex, true);
       }
     }
   }
 
-  getPossibleMoves(): number[] {
-    const emptyTile = this.tiles[this.emptyTileIndex];
-    const movableTiles: number[] = [];
+  getEmptyTiles(): Tile[] {
+    return this.tiles.filter(tile => tile.imageUrl === null);
+  }
 
-    // Check all tiles to find adjacent ones
+  getPossibleMoves(): number[] {
+    const emptyTiles = this.getEmptyTiles();
+    const movableTileIndices: number[] = [];
     this.tiles.forEach((tile, index) => {
-      // A tile can move if it's horizontally or vertically adjacent to the empty tile
-      if (
+      if (tile.imageUrl === null) return;
+      const isMovable = emptyTiles.some(emptyTile =>
         (tile.row === emptyTile.row && Math.abs(tile.col - emptyTile.col) === 1) ||
         (tile.col === emptyTile.col && Math.abs(tile.row - emptyTile.row) === 1)
-      ) {
-        movableTiles.push(index);
+      );
+      if (isMovable) {
+        movableTileIndices.push(index);
       }
     });
-
-    return movableTiles;
+    return movableTileIndices;
   }
 
   canMoveTile(index: number): boolean {
     const tile = this.tiles[index];
-    const emptyTile = this.tiles[this.emptyTileIndex];
-
-    // A tile can move if it's horizontally or vertically adjacent to the empty tile
-    return (
+    if (tile.imageUrl === null) return false;
+    const emptyTiles = this.getEmptyTiles();
+    return emptyTiles.some(emptyTile =>
       (tile.row === emptyTile.row && Math.abs(tile.col - emptyTile.col) === 1) ||
       (tile.col === emptyTile.col && Math.abs(tile.row - emptyTile.row) === 1)
     );
   }
 
-  moveTile(index: number): void {
-    if (this.canMoveTile(index)) {
-      const emptyTile = this.tiles[this.emptyTileIndex];
-      const clickedTile = this.tiles[index];
+  moveTile(index: number, isShuffle: boolean = false): void {
+    if (!isShuffle && !this.canMoveTile(index)) {
+      return;
+    }
 
-      // Swap positions
+    const clickedTile = this.tiles[index];
+    const adjacentEmptyTile = this.getEmptyTiles().find(emptyTile =>
+      (clickedTile.row === emptyTile.row && Math.abs(clickedTile.col - emptyTile.col) === 1) ||
+      (clickedTile.col === emptyTile.col && Math.abs(clickedTile.row - emptyTile.row) === 1)
+    );
+
+    if (adjacentEmptyTile) {
       const tempRow = clickedTile.row;
       const tempCol = clickedTile.col;
+      clickedTile.row = adjacentEmptyTile.row;
+      clickedTile.col = adjacentEmptyTile.col;
+      adjacentEmptyTile.row = tempRow;
+      adjacentEmptyTile.col = tempCol;
 
-      clickedTile.row = emptyTile.row;
-      clickedTile.col = emptyTile.col;
-
-      emptyTile.row = tempRow;
-      emptyTile.col = tempCol;
+      // After a user's move, check if the puzzle is solved.
+      if (!isShuffle) {
+        this.checkIfSolved();
+      }
     }
+  }
+
+  /**
+   * Checks if all tiles are in their correct, original positions.
+   */
+  checkIfSolved(): void {
+    // The puzzle is solved if every tile is in the position defined by its ID.
+    for (const tile of this.tiles) {
+      if (tile.imageUrl !== null) { // We only check the image tiles, not the empty spaces.
+        const correctRow = Math.floor(tile.id / 3);
+        const correctCol = tile.id % 3;
+        if (tile.row !== correctRow || tile.col !== correctCol) {
+          this.isSolved = false;
+          return; // Found a misplaced tile, so it's not solved.
+        }
+      }
+    }
+
+    // If the loop completes, all tiles are in the correct place.
+    this.isSolved = true;
   }
 
   getTileStyle(tile: Tile): object {

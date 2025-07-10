@@ -28,8 +28,8 @@
   border-radius: 8px;
   overflow: hidden;
   background-color: #1e1e1e;
-  align-content: center;
   padding: 12px;
+  margin-left: 22%;
 }
 
 .tile {
