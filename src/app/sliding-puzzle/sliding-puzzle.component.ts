@@ -39,7 +39,7 @@ export class SlidingPuzzleComponent implements OnInit {
       for (let col = 0; col < 3; col++) {
         this.tiles.push({
           id: row * 3 + col,
-          imageUrl: `${row}${col}.png`,
+          imageUrl: `${col}${row}.png`,
           row: row,
           col: col
         });
